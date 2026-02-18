@@ -46,9 +46,9 @@ JSON-innstillingene i VS Code er inndelt i følgende hierarki:
 3. User settings (globalt for brukeren)
 4. Default settings (innebygd i VS Code)
 
-De først nevnte vil overstyre de senere. Altså, om Workspace sier noe om `fontSize": 14`, mens User settings sier `fontSize": 12`, blir fontstørrelse 14 gjeldende.
+De først nevnte vil overstyre de senere. Altså, om Workspace sier noe om `fontSize": 14`, mens User sier `fontSize": 12`, blir fontstørrelse 14 gjeldende.
 
-Den første, multi root settings, er aktuell bare når VS Code har flere toppmapper åpne samtidig. Dette er for mer spesiell bruk, og vi skal ikke se særlig på det her. Det normale er å åpne VS Code på arbeidskatalogen til prosjektet, som gjerne må ha mange underkataloger. Dette er likevel ikke multi root. (Multi root startes ved å klikke **File/Add folder to Workspace ...** i VS Code-menyen og leder til en egen **.code-workspace**-fil.)
+Den første, multi root settings, er aktuell bare når VS Code har flere toppmapper åpne samtidig. Dette er for mer spesiell bruk, og vi skal ikke se særlig på det her. Det normale er å åpne VS Code på arbeidskatalogen til prosjektet, som gjerne må ha mange underkataloger. (Dette er likevel ikke multi root. Multi root startes ved å klikke **File/Add folder to Workspace ...** i VS Code-menyen og leder til en egen **.code-workspace**-fil.)
 
 VS Code har i tillegg noen preferanser brukeren kan sette (ofte knyttet til layout som mørkt eller lyst tema, om paneler skal vises til høyre eller venstre etc) som ikke er en del av JSON-systemet og som lagres separat.
 
@@ -68,14 +68,14 @@ Det anbefales ikke å editere disse direkte, men heller bruke et GUI som VS Code
 
 ### 📁 JSON-filer
 
-Man kan åpne JSON-filene til User settings og Workspace settings via kommandopaletten (`Ctrl+Shift+P`) ved:
+Man kan åpne JSON-filene til User og Workspace via kommandopaletten (`Ctrl+Shift+P`) ved:
 
 ```text
 Preferences: Open User Settings (JSON)
 Preferences: Open Workspace Settings (JSON)
 ```
 
-Disse er normalt små og oversiktlige. Merk at disse bare inneholder verdier bruker har satt. Heller ikke extensions legger inn settinger her.
+Disse er normalt små og oversiktlige. Disse inneholder bare verdier bruker har satt. Heller ikke extensions legger inn settinger her.
 
 Man kan også få oversikt over default-verdier nøklene har via kommandopaletten ved
 
@@ -91,13 +91,13 @@ For å eksemplifisere: Anta User settings inneholder
 "editor.fontFamily": "Fira Code, Consolas, 'Courier New' monospace"
 ```
 
-Et søk etter **editor.fontFamily** i default settings viser nøkkelen med denne default-verdien:
+Et søk etter **editor.fontFamily** i default settings viser at nøkkelen har denne default-verdien:
 
 ```json
 "editor.fontFamily": "'Droid Sans Mono', monospace"
 ```
 
-Slik kan man enkelt eksperimenter, resette til default osv. uten å rote noe til eller miste oversikt, i det minste med nøkler man kjenner litt til.
+Slik kan man enkelt eksperimenter, resette til default verdi osv. uten å rote noe til eller miste oversikt, i det minste med nøkler man kjenner litt til.
 
 Husk også at man kan kommentere i JSON-filene ved:
 
@@ -105,13 +105,13 @@ Husk også at man kan kommentere i JSON-filene ved:
 // Midlertidig test
 ```
 
-hvilket også hjelper på oversikt og forståelse over tid.
+hvilket også kan bidra til oversikt og forståelse over tid.
 
 ### 📂 Settingsvinduet
 
 For å åpne settingsvinduet kan man klikke `Ctrl + ,`. Det første man ser er en full, dynamisk dokumentasjon av JSON-settingene, brukervennlig og oversiktlig. Her bør man lese og gjøre seg kjent. I tillegg kan man lete etter bestemte ord eller konkrete nøkler i søkefeltet, som vi straks skal se på.
 
-Øverst ser man også en knapp **Backup and Sync Settings**. Her kan man sett opp en synkronisering VS Code-innstillingene, slik at man kan ha samme arbeidsmiljø på flere PC-er. Da deles
+Øverst ser man også en knapp **Backup and Sync Settings**. Her kan man sett opp en synkronisering av VS Code-innstillingene, slik at man kan ha samme arbeidsmiljø på flere PC-er. Da deles
 
 - User settings (**settings.json**)
 - Keybindings
@@ -124,43 +124,45 @@ Dette deles ikke:
 - Workspace settings (**.vscode/settings.json**) synkes ikke.
 - Folder / multi-root settings
 
-Workspace-settings er spesifikke for hvert prosjekt, og  normalt er **.vscode/settings.json** del av et vanlig Git/GitHub-håndtert prosjekt.
+Workspace-settings er spesifikke for hvert prosjekt, og normalt deles disse (**.vscode/settings.json**) via av et vanlig Git/GitHub-håndtert prosjekt.
 
-En særlig nyttig søk i settingsvinduet er
+En særlig nyttig søk i settingsvinduet er ved følgende filter:
 
 ```text
 @modified
 ```
 
-som viser, både for User og Workspace, hvilke endringer bruker har gjort. Her kan man lese om nøkler, eksperimentere med innstillinger og i det hele tatt holde oversikt over det som gjerne angår en mest.
+Denne viser, både for User og Workspace, hvilke endringer bruker har gjort. I dette vinduet kan man så lese om nøkler, eksperimentere med innstillinger og i det hele tatt holde oversikt over det som gjerne angår en mest.
 
-La oss som eksempel søker etter **editor.fontFamily** i søkefeltet. Da får man fram dokumentasjonen for denne nøkkelen. Man ser verdien nøkkelen har, enten i User eller Workspace (velges rett under søkefeltet). I mitt tilfelle viser for User
+La oss som eksempel søker etter **editor.fontFamily** i søkefeltet. Da får man fram dokumentasjonen for denne nøkkelen. Man ser verdien nøkkelen har enten i User eller Workspace (velges rett under søkefeltet). I mitt tilfelle vises
 
 ```text
 Fira Code, Consolas, 'Courier New', monospace
 ```
 
-og for workspace
+for User og
 
 ```text
 'Droid Sans Mono', monospace
 ```
 
-Her må vi stoppe opp og avklare noe som ofte forvirrer. Alene forteller ikke verdifeltet hvilken verdi denne nøkkelen faktisk har. Default-verdi vises nemlig om tilhørende nøkkelen ikke er satt. I eksempelet settes det følgende eksplisitt i User-json
+for workspace.
+
+Her må vi stoppe opp og avklare noe som ofte forvirrer. Alene forteller ikke verdifeltet hvilken verdi nøkkelen faktisk har. Default-verdi vises nemlig om tilhørende nøkkelen ikke er satt. I eksempelet settes det følgende eksplisitt i User-json
 
 ```json
 "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace"
 ```
 
-mens Workspace-json ikke setter nøkkelen. Det betyr at font-settingen bruker har satt globalt, faktisk gjelder prosjektet man jobber med i VS Code. Men ut fra dokumentasjonsvinduet (settingsvinduet), siden Workspace overstyrer User, kan det se ut som at
+mens Workspace-json ikke setter nøkkelen. Det betyr at font-settingen bruker har satt globalt faktisk gjelder prosjektet man jobber med. Men ut fra settingsvinduet (dokumentasjonsvinduet), siden Workspace overstyrer User, kan det se ut som at
 
 ```json
 "editor.fontFamily": "'Droid Sans Mono', monospace"
 ```
 
-er aktiv, hvilket den altså ikke er.
+er aktiv, hvilket den ikke er.
 
-Likevel, settingsvinduet er nyttig. Man kan sette verdier der, og tilhørende JSON-fil oppdateres automatisk. Motsatt oppdatering skjer også. Videre har vi sett viktigheten av `@modified`, og vi har i tillegg flere slike søkefiltre:
+Likevel, settingsvinduet er nyttig. Man kan sette verdier, og tilhørende JSON-fil oppdateres automatisk. Motsatt oppdatering skjer også. Videre har vi sett viktigheten av søkefilter  `@modified`, og vi har i tillegg flere slike:
 
 ```text
 @modified:    — hva som er endret
@@ -186,11 +188,11 @@ VS Code vil autofullføre disse (foreslå mulige fortsettelser der det er mulig)
 @feature:editor @modified
 ```
 
-Når man finner fram til aktuell nøkkel, kan man også klikk på tannhjulet ⚙️ ved siden av og resette verdi til default eller kopiere settingen (f.eks. i JSON-format).
+Når man finner fram til aktuell nøkkel, kan man også klikk på tannhjulet ⚙️ ved siden av og resette verdi til default eller kopiere settingen ut (f.eks. i JSON-format).
 
 ### 🔑 Viktige nøkler
 
-Det er umulig, og ikke nødvendig, å ha oversikt over større deler av nøkkelsettet til VS Code. Her kommer imidlertid et utvalg som kan være aktuelt for brukere som meg.
+Det er umulig, og ikke nødvendig, å ha oversikt over større deler av nøkkelsettet til VS Code. Her kommer imidlertid et utvalg som kan være aktuelt for relativt nye brukere.
 
 #### 1️⃣ Editor / redigering
 
@@ -270,7 +272,7 @@ terminal.integrated.cursorBlinking    Cursor blinking
 
 ## 🔧 Extensions
 
-Også når det gjelder extensions kan eksperimentering, mer eller mindre gode tips og annet, over tid føre til redusert oversikt. Så det første man trenger er å vite hvordan man kan få litt oversikt over hvilke extensions man faktisk har, samt hvilke som er aktive eller ikke.
+Også når det gjelder extensions kan eksperimentering, mer eller mindre gode tips etc, over tid føre til redusert oversikt. Så det første man trenger er å vite hvordan man kan få litt oversikt over installerte extensions, samt hvilke som er aktive eller ikke.
 
 Man kan åpne extensions-panelet grafisk eller ved
 
@@ -278,13 +280,15 @@ Man kan åpne extensions-panelet grafisk eller ved
 Ctrl + Shift + X
 ```
 
-Her vil en en serie extensions listes, både de man allerede har og mange andre som tilbys. Man kan filtrere ved å klikke på filtreringsikonet til høyre i søkefeltet etter:
+Her vil en serie extensions listes, både de man allerede har og mange andre som tilbys. Man kan filtrere etter følgende valg ved å klikke på filtreringsikonet til høyre i søkefeltet.
 
-- Installed → alt du har
-- Updates → hvilke som kan oppdateres
-- Built in → innebygde extensions
-- Enabled → faktisk aktive
-- Disabled → installert men ikke i bruk
+```text
+- Installed   → alt du har
+- Updates     → hvilke som kan oppdateres
+- Built in    → innebygde extensions
+- Enabled     → faktisk aktive
+- Disabled    → installert men ikke i bruk
+```
 
 Man kan også søke på bestemt ting, f.eks. knyttet til C++, Python, Markdown, Asciidoc etc som f.eks:
 
@@ -302,6 +306,6 @@ I tillegg kan man fra **Command Palett** (CTR+SHIFT+P) taste inn
 Extensions: Show Running Extensions
 ```
 
-Uansett kan man da se hvilke utvidelser som er aktive (enabled) eller ikke-aktive (disabled), og man velge/endre dette i vinduene som dukker opp når man klikker på utvidelsene.
+Uansett kan man da se hvilke utvidelser som er aktive (enabled) eller ikke-aktive (disabled), og man kan velge/endre dette i vinduene som dukker opp når man klikker på utvidelsene.
 
-Det er ikke uvanlig å ha endt opp i en situasjon der konkurrerende utvidelser kjører (flere tilbyr samme tjenester), så det kan være greit å rydde litt opp her innimellom, prøve hvilke man er mest fornøyd med, og deaktivisere resten (evt avinstallere dem om man virkelig har bestemt seg).
+Det er ikke uvanlig å ha endt opp i en situasjon der konkurrerende utvidelser kjører (der flere tilbyr samme tjenester), så det kan være greit å rydde litt opp her innimellom, prøve hvilke man er mest fornøyd med, og deaktivisere resten (evt avinstallere dem om man virkelig har bestemt seg).
