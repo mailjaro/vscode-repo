@@ -16,11 +16,14 @@
 
 - Debugging: Innebygd støtte for å feilsøke kode, sjekke variabler og se *call stacks*.
 
-Men med all denne funksjonaliteten og fleksibiliteten, følger også kompleksitet i oppsett og innstillinger. Dette heftet forsøker å være til hjelp for dem som ønsker å få en viss oversikt, kanskje spesielt til innstillingene, som er spredd ut i en hærskare av JSON-settinger. I starten kan dette virke som en jungel man kvier seg for å forholde seg til.
+Men med all denne funksjonaliteten og fleksibiliteten, følger også kompleksitet i oppsett og innstillinger. JSON er valgt for håndtering av innstillinger, og i starten kan den totale mengden virke overveldende. Likeledes kreves en rekke extensions for å jobbe med ulike programmeringsspråk eller filformater. Disse må oppdateres, stadig nye tilbys, og over tid kan oversikt og kontroll avta.
 
-Heftet vil derfor starte der, og vil ellers se på extension (et annet område som kan bidra uorden og mangel på oversikt) og andre ting som dukker opp detter hvert.
+Dette heftet forsøker å være til hjelp for dem som ønsker å få en viss oversikt over VS Code. Det fokuseres altså på
 
-Vi vil basere oss på et Linux-system her, slik at kataloger og kodeeksempler gjelder Linux.
+- ⚙️ JSON-instillinger
+- 🧩 Utvidelser
+
+Vi vil basere oss på et Linux-system her, slik at kataloger og eksempler gjelder Linux.
 
 ## 📄 JSON
 
@@ -270,7 +273,7 @@ terminal.integrated.scrollback        Hvor mange linjer som huskes
 terminal.integrated.cursorBlinking    Cursor blinking
 ```
 
-## 🔧 Extensions
+## 🧩 Extensions
 
 Også når det gjelder extensions kan eksperimentering, mer eller mindre gode tips etc, over tid føre til redusert oversikt. Så det første man trenger er å vite hvordan man kan få litt oversikt over installerte extensions, samt hvilke som er aktive eller ikke.
 
