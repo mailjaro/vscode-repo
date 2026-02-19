@@ -5,6 +5,6 @@ version: "1.0"
 date: "2026-02-19"
 language: "nb"
 rights: © 2026 Jan Roger Sandbakken
-cover-image: cover.png
-css: dark.css
+cover-image: images/cover.png
+css: styles/dark.css
 # Velg dark.css eller light.css her

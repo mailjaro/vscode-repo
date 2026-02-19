@@ -1,10 +1,10 @@
-epub: vscode.md common.yaml
+epub: vscode.md config/common.yaml
 	$(info Building EPUB:)
-	@pandoc vscode.md --metadata-file=common.yaml \
-	-o vscode.epub
+	@pandoc vscode.md --metadata-file=config/common.yaml \
+	-o builds/vscode.epub
 
 open-epub:
-	@xdg-open "vscode.epub"
+	@xdg-open "builds/vscode.epub"
 
 preview: open-epub
 

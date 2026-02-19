@@ -14,19 +14,37 @@ Heftet er skrevet for Linux-brukere og fokuserer på å få kontroll:
 - ⚙️ JSON-innstillinger
 - 🧩 Utvidelser
 
+## 🗂️ Struktur
+
+```text
+.
+├── builds
+│   └── vscode.epub
+├── config
+│   └── common.yaml
+├── images
+│   └── cover.png
+├── Makefile
+├── README.md
+├── styles
+│   ├── dark.css
+│   └── light.css
+└── vscode.md
+```
+
 ## 📦 Bygging av EPUB
 
 For å konvertere fra MD til EPUB, benyttes kommandoen
 
 ```bash
 pandoc vscode.md \
-  --metadata-file=common.yaml -o vscode.epub
+  --metadata-file=config/common.yaml -o builds/vscode.epub
 ```
 
 **common.yaml** inneholder metadata, samt en linje
 
 ```css
-css: light.css
+css: styles/light.css
 ```
 
 der man kan velge mørkt eller lyst tema ved hhv. **dark.css** eller **light.css**.
