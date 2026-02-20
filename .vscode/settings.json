@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "adocs",
         "autofetch",
         "Autoformattering",
         "avinstallere",
@@ -9,11 +10,19 @@
         "Filkoding",
         "filtreringsikonet",
         "filutforsker",
+        "KILDEFIL",
         "Konfig",
+        "linkcss",
+        "masterfil",
         "pandoc",
         "Poenget",
+        "popd",
+        "pushd",
+        "sectanchors",
         "settingsvinduet",
-        "temaer"
+        "skriptet",
+        "temaer",
+        "toclevels"
     ],
     "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
 }

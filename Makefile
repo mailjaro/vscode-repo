@@ -1,10 +1,12 @@
 epub: vscode.md config/common.yaml
 	$(info Building EPUB:)
-	@pandoc vscode.md --metadata-file=config/common.yaml \
-	-o builds/vscode.epub
+	@pandoc vscode.md  \
+   --metadata-file=config/common.yaml \
+   --css=styles/epub-dark.css -o \
+   builds/vscode-dark.epub
 
 open-epub:
-	@xdg-open "builds/vscode.epub"
+	@xdg-open "builds/vscode-dark.epub"
 
 preview: open-epub
 
