@@ -22,7 +22,9 @@
         "settingsvinduet",
         "skriptet",
         "temaer",
-        "toclevels"
+        "toclevels",
+        "ulagrede"
     ],
     "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
+    "makefile.configureOnOpen": false,
 }

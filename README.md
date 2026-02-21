@@ -5,6 +5,25 @@
 
 ---
 
+## ❗ Viktig info
+
+✅ Husk: Start enhver editering med
+
+- `git fetch origin`
+- `git pull`
+
+✅ Husk: Avslutt enhver editering med
+
+- Lagre alle ulagrede filer
+- `./runner.sh`
+- `git add -A`
+- `git commit -m "Beskrivelse"`
+- `git push`
+
+(Eller gjør det ekvivalente fra **VS Code**.)
+
+---
+
 ## 📌 Om prosjektet
 
 Dette prosjektet inneholder kildematerialet (**vscode.md**) til heftet **"Litt om VS Code"**.
