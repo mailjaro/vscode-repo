@@ -197,7 +197,7 @@ VS Code vil autofullføre disse (foreslå mulige fortsettelser der det er mulig)
 
 Når man finner fram til aktuell nøkkel, kan man også klikk på tannhjulet ⚙️ ved siden av og resette verdi til default eller kopiere settingen ut (f.eks. i JSON-format).
 
-### Struktur i JSON Default settings
+### ⚙️ Struktur i JSON Default settings
 
 Selve filen inneholder ca. 11 000 linjer og kan synes vanskelig å få oversikt i.  Men alt er hierarkisk organisert i “namespaces” gruppert med punktnotasjon. Her ser vi vi de øverste nivåene:
 
