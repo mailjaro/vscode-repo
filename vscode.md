@@ -104,7 +104,7 @@ Et søk etter **editor.fontFamily** i default settings viser at nøkkelen har de
 "editor.fontFamily": "'Droid Sans Mono', monospace"
 ```
 
-Slik kan man enkelt eksperimenter, resette til default verdi osv. uten å rote noe til eller miste oversikt, i det minste med nøkler man kjenner litt til.
+Slik kan man enkelt eksperimenter, resette til default verdi osv, uten å rote noe til eller miste oversikt, i det minste med nøkler man kjenner litt til.
 
 Husk også at man kan kommentere i JSON-filene ved:
 
