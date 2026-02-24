@@ -18,7 +18,11 @@ Dette heftet forsøker å være til hjelp for dem som ønsker å få en viss ove
 * JSON-instillinger
 * Utvidelser
 
-Vi vil basere oss på et Linux-system her, slik at kataloger og eksempler gjelder Linux.
+VS Code ellers mange muligheter for å effektivisere arbeid. Det er bare å kaste seg over mulighetene. En av de vi kort skal se på er
+
+* Task automation
+
+Vi vil gjennomgående basere oss på et Linux-system her, slik at kataloger og eksempler i heftet gjelder Linux.
 
 === JSON
 
@@ -115,7 +119,7 @@ Slik kan man enkelt eksperimenter, resette til default verdi osv. uten å rote n
 Husk også at man kan kommentere i JSON-filene ved:
 
 [%unbreakable]
-[source,json]
+[source,text]
 ----
 // Midlertidig test
 ----
@@ -223,6 +227,120 @@ VS Code vil autofullføre disse (foreslå mulige fortsettelser der det er mulig)
 
 Når man finner fram til aktuell nøkkel, kan man også klikk på tannhjulet ved siden av og resette verdi til default eller kopiere settingen ut (f.eks. i JSON-format).
 
+==== Struktur i JSON Default settings
+
+Selve filen inneholder ca. 11 000 linjer og kan synes vanskelig å få oversikt i. Men alt er hierarkisk organisert i “namespaces” gruppert med punktnotasjon. Her ser vi vi de øverste nivåene:
+
+[%unbreakable]
+[source,text]
+----
+settings
+│
+├── editor
+│   ├── font*
+│   ├── cursor*
+│   ├── format*
+│   ├── suggest*
+│   ├── minimap*
+│   ├── wordWrap
+│   ├── tabSize
+│   └── render*
+│
+├── files
+│   ├── autoSave
+│   ├── encoding
+│   ├── exclude
+│   ├── associations
+│   └── trim*
+│
+├── workbench
+│   ├── colorTheme
+│   ├── iconTheme
+│   ├── startupEditor
+│   ├── activityBar*
+│   ├── editor*
+│   └── sideBar*
+│
+├── window
+│   ├── zoomLevel
+│   ├── title*
+│   └── openFilesInNewWindow
+│
+├── terminal
+│   └── integrated
+│       ├── font*
+│       ├── shell*
+│       ├── profiles*
+│       ├── scrollback
+│       └── cursor*
+│
+├── explorer
+│   ├── confirmDelete
+│   ├── sortOrder
+│   └── compactFolders
+│
+├── search
+│   ├── exclude
+│   ├── useIgnoreFiles
+│   └── followSymlinks
+│
+├── git
+│   ├── enabled
+│   ├── autofetch
+│   ├── confirmSync
+│   └── decorate*
+│
+├── debug
+│   ├── openDebug
+│   ├── inlineValues
+│   └── toolBarLocation
+│
+├── extensions
+│   └── (extension-specific settings)
+│
+└── [language-id]
+    ├── editor.*
+    ├── files.*
+    └── format*
+----
+
+der en JSON-notasjon som f.eks.
+
+[%unbreakable]
+[source,json]
+----
+"editor.fontSize": 14
+----
+
+representeres ved
+
+[%unbreakable]
+[source,text]
+----
+editor
+ └── fontSize
+----
+
+Systemer er dypere enn vist på flere steder. Eksempler som
+
+[%unbreakable]
+[source,json]
+----
+"terminal.integrated.fontSize"
+----
+
+som ville vært representert av
+
+[%unbreakable]
+[source,text]
+----
+settings
+ └── language override (json)
+      └── editor.tabSize
+----
+
+vises ikke i oversikten.
+
 ==== Viktige nøkler
 
 Det er umulig, og ikke nødvendig, å ha oversikt over større deler av nøkkelsettet til VS Code. Her kommer imidlertid et utvalg som kan være aktuelt for relativt nye brukere.
@@ -267,7 +385,7 @@ files.insertFinalNewline      Newline på slutten      true
 files.encoding                Filkoding               "utf8"
 ----
 
-===== 3. Editor / display / UI
+===== 4. Editor / display / UI
 
 [%unbreakable]
 [source,text]
@@ -280,7 +398,7 @@ editor.cursorBlinking    Blinking cursor
 editor.lineNumbers       Linjenummer visning
 ----
 
-===== 3. Linting / formatering / Markdown / AsciiDoc
+===== 5. Linting / formatering / Markdown / AsciiDoc
 
 [%unbreakable]
 [source,text]
@@ -294,7 +412,7 @@ asciidoc.preview.breaks       Hard line breaks
 asciidoc.extension.path       Tilpass path til Asciidoctor binær
 ----
 
-===== 3. Git
+===== 6. Git
 
 [%unbreakable]
 [source,text]
@@ -305,7 +423,7 @@ git.autofetch           Henter automatisk
 git.confirmSync         Bekreft før sync
 ----
 
-===== 3. Terminal / konsoll
+===== 7. Terminal / konsoll
 
 [%unbreakable]
 [source,text]
@@ -366,3 +484,201 @@ Extensions: Show Running Extensions
 Uansett kan man da se hvilke utvidelser som er aktive (enabled) eller ikke-aktive (disabled), og man kan velge/endre dette i vinduene som dukker opp når man klikker på utvidelsene.
 
 Det er ikke uvanlig å ha endt opp i en situasjon der konkurrerende utvidelser kjører (der flere tilbyr samme tjenester), så det kan være greit å rydde litt opp her innimellom, prøve hvilke man er mest fornøyd med, og deaktivisere resten (evt avinstallere dem om man virkelig har bestemt seg).
+
+=== Task automation
+
+For de som er interessert i spesielle ting som Python, C++ eller hva, fins det automation-tips der ute. Her skal vi vise et mer generelt eksempel på hvordan automatiserer kjøring av et shell-skript kalt *runner.sh* på prosjektkatalogen.
+
+Det er relativt enkelt å sette opp _task automation_. I VS Code gjør man:
+
+[arabic]
+. Åpne prosjektmappen
+. Trykk `Ctrl+Shift+P`
+. Skriv: *Tasks: Configure Task*
+. Velg: *Create tasks.json file from template*
+. Velg: *Others*
+
+Dette genererer filen
+
+[%unbreakable]
+[source,text]
+----
+.vscode/tasks.json
+----
+
+som nå åpnes i VS Code. Rediger innholdet til:
+
+[%unbreakable]
+[source,json]
+----
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Passende beskrivelse",
+      "type": "shell",
+      "command": "./runner.sh",
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}
+----
+
+Tasken kan nå kjøres ved `Shift+Ctrl+B` og klikke på tasken med beskrivelsen du valgte.
+
+Linjene
+
+[%unbreakable]
+[source,json]
+----
+"group": "build",
+"problemMatcher": []
+----
+
+er nyttige å legge til. Den første gjør at VS Code hopper rett til `Run Task` etter `Shift+Ctrl+B`, mens den andre gjør at eventuell output ikke tolkes som kompilator-feil.
+
+Skal man siden automatisere flere tasks, legges disse inn i samme fil.
+
+*Tips*: Det fins en extension Task som gjør at man kjøre tasken via en tekst-knapp nede i taskbar i VS Code, for enda kortere snarvei. Søk gjerne etter informasjon om dette.
+
+=== Command Pallette
+
+Vi har benyttet kommandopaletten (som er svært nyttig) flere ganger. Her skal vi supplere med en totaloversikt over hva man kan gjøre.
+
+For det første er oppgavene på formen:
+
+[%unbreakable]
+[source,text]
+----
+[System / Modul]: [Handling]
+----
+
+som f.eks.
+
+[%unbreakable]
+[source,text]
+----
+Preferences: Open User Settings (JSON)
+----
+
+Man trenger ikke å skrive hele kommandoen. I praksis en gjør VS Code en fuzzy search blant alle kommandoer.
+
+En tre-representasjon av palettens muligheter ser slik ut:
+
+[%unbreakable]
+[source,text]
+----
+Command Palette
+│
+├── File
+│   ├── New File
+│   ├── Open File
+│   ├── Save
+│   ├── Save All
+│   └── Reopen Closed Editor
+│
+├── Edit
+│   ├── Undo / Redo
+│   ├── Format Document
+│   ├── Rename Symbol
+│   ├── Refactor
+│   └── Emmet Expand
+│
+├── View
+│   ├── Toggle Sidebar
+│   ├── Toggle Panel
+│   ├── Appearance
+│   │   ├── Change Theme
+│   │   ├── Change Icon Theme
+│   │   └── Toggle Full Screen
+│   └── Open View (Explorer, Search, SCM, Run)
+│
+├── Go / Navigation
+│   ├── Go to File
+│   ├── Go to Symbol
+│   ├── Go to Definition
+│   ├── Go to Line
+│   └── Go Back / Forward
+│
+├── Search
+│   ├── Find in File
+│   ├── Replace
+│   ├── Search in Workspace
+│   └── Toggle Regex / Case / Whole Word
+│
+├── Terminal
+│   ├── Create New Terminal
+│   ├── Split Terminal
+│   ├── Select Default Profile
+│   └── Run Active File
+│
+├── Tasks
+│   ├── Run Task
+│   ├── Configure Task
+│   ├── Restart Running Task
+│   └── Terminate Task
+│
+├── Debug
+│   ├── Start Debugging
+│   ├── Add Configuration
+│   ├── Select Debug Configuration
+│   └── Toggle Breakpoint
+│
+├── Git / Source Control
+│   ├── Commit
+│   ├── Push
+│   ├── Pull
+│   ├── Checkout Branch
+│   └── Stage Changes
+│
+├── Extensions
+│   ├── Install Extensions
+│   ├── Show Installed Extensions
+│   ├── Disable Extension
+│   └── Reload Window
+│
+├── Preferences
+│   ├── Open Settings (UI)
+│   ├── Open Settings (JSON)
+│   ├── Keyboard Shortcuts
+│   ├── Profiles
+│   └── Settings Sync
+│
+└── Developer
+    ├── Reload Window
+    ├── Toggle Developer Tools
+    ├── Inspect Context Keys
+    └── Show Running Extensions
+----
+
+Det kan være lurt å gjøre seg kjent her for effektivt arbeid.
+
+=== Andre ting å fordype seg i
+
+VS Code har flere muligheter for effektivisering av arbeid. Hva man vil satse på avhenger av type prosjekt, smak og annet. Her vil vi bare nevne ting man bør søke opp dersom begynner å jobbe mer arbeidsintensivt.
+
+* Snippets
++
+Snippets er snarveier til å sette inn tilpassede kodeblokker eller annen fast tekststruktur, gjerne med placeholders for ulike valg eller variable. Disse settes opp globalt (i user, ikke i workspace).
++
+*Merk*: Noen grunnleggende snippets følger med VS Code. Og om man markerer et ord, kan man velge i et utvalg om man klikker på lyspæren, den såkalte *lightbulb*.
++
+*Merk*: Lightbulb kommer av og til med effektive forslag ellers også, så eksperimenter gjerne.
+* Multi cursor editing
++
+Multi cursor editing gjør det mulig å kjapt editere flere steder i teksten samtidig. Mulighetene er mange, så jeg anbefaler å lese mer om dette.
+* Snarveier
++
+Man kan enkelt sette opp snarveier (keybindings) for ofte utførte oppgaver. Søk gjerne opp informasjon om dette.
+* Profiles
++
+Profiler gir et separat arbeidsmiljøer inni VS Code. Dvs. at man kan samle
+** Settings
+** Extensions
+** Keybindings
+** Snippets
+** Layout
+** Tasks
+
+i en profil og bytte mellom ulike profiler etter behov. Dermed kan man ha bare de utvidelsene man trenger, de snarveiene man trenger osv. for enda mer strømlinjeformet arbeidsflyt, uten kollisjoner og unødvendige ting. Søk opp mer informasjon om dette.

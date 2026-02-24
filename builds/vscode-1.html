@@ -573,6 +573,7 @@ pre.rouge .gs {
 <ul class="sectlevel3">
 <li><a href="#_json_filer">📁 JSON-filer</a></li>
 <li><a href="#_settingsvinduet">📂 Settingsvinduet</a></li>
+<li><a href="#_struktur_i_json_default_settings">Struktur i JSON Default settings</a></li>
 <li><a href="#_viktige_nøkler">🔑 Viktige nøkler</a>
 <ul class="sectlevel4">
 <li><a href="#_1️⃣_editor_redigering">1️⃣ Editor / redigering</a></li>
@@ -587,6 +588,9 @@ pre.rouge .gs {
 </ul>
 </li>
 <li><a href="#_extensions">🧩 Extensions</a></li>
+<li><a href="#_task_automation">🤖 Task automation</a></li>
+<li><a href="#_command_pallette">⚡ Command Pallette</a></li>
+<li><a href="#_andre_ting_å_fordype_seg_i">🧠 Andre ting å fordype seg i</a></li>
 </ul>
 </li>
 </ul>
@@ -650,7 +654,17 @@ pre.rouge .gs {
 </ul>
 </div>
 <div class="paragraph">
-<p>Vi vil basere oss på et Linux-system her, slik at kataloger og eksempler gjelder Linux.</p>
+<p>VS Code ellers mange muligheter for å effektivisere arbeid. Det er bare å kaste seg over mulighetene. En av de vi kort skal se på er</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>🤖 Task automation</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Vi vil gjennomgående basere oss på et Linux-system her, slik at kataloger og eksempler i heftet gjelder Linux.</p>
 </div>
 <div class="sect2">
 <h3 id="_json"><a class="anchor" href="#_json"></a>📄 JSON</h3>
@@ -769,7 +783,7 @@ Preferences: Open Workspace Settings (JSON)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="json"><span class="err">//</span><span class="w"> </span><span class="err">Midlertidig</span><span class="w"> </span><span class="err">test</span></code></pre>
+<pre class="rouge highlight"><code data-lang="text">// Midlertidig test</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -902,6 +916,122 @@ Preferences: Open Workspace Settings (JSON)</code></pre>
 </div>
 <div class="paragraph">
 <p>Når man finner fram til aktuell nøkkel, kan man også klikk på tannhjulet ⚙️ ved siden av og resette verdi til default eller kopiere settingen ut (f.eks. i JSON-format).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_struktur_i_json_default_settings"><a class="anchor" href="#_struktur_i_json_default_settings"></a>Struktur i JSON Default settings</h4>
+<div class="paragraph">
+<p>Selve filen inneholder ca. 11 000 linjer og kan synes vanskelig å få oversikt i. Men alt er hierarkisk organisert i “namespaces” gruppert med punktnotasjon. Her ser vi vi de øverste nivåene:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text">settings
+│
+├── editor
+│   ├── font*
+│   ├── cursor*
+│   ├── format*
+│   ├── suggest*
+│   ├── minimap*
+│   ├── wordWrap
+│   ├── tabSize
+│   └── render*
+│
+├── files
+│   ├── autoSave
+│   ├── encoding
+│   ├── exclude
+│   ├── associations
+│   └── trim*
+│
+├── workbench
+│   ├── colorTheme
+│   ├── iconTheme
+│   ├── startupEditor
+│   ├── activityBar*
+│   ├── editor*
+│   └── sideBar*
+│
+├── window
+│   ├── zoomLevel
+│   ├── title*
+│   └── openFilesInNewWindow
+│
+├── terminal
+│   └── integrated
+│       ├── font*
+│       ├── shell*
+│       ├── profiles*
+│       ├── scrollback
+│       └── cursor*
+│
+├── explorer
+│   ├── confirmDelete
+│   ├── sortOrder
+│   └── compactFolders
+│
+├── search
+│   ├── exclude
+│   ├── useIgnoreFiles
+│   └── followSymlinks
+│
+├── git
+│   ├── enabled
+│   ├── autofetch
+│   ├── confirmSync
+│   └── decorate*
+│
+├── debug
+│   ├── openDebug
+│   ├── inlineValues
+│   └── toolBarLocation
+│
+├── extensions
+│   └── (extension-specific settings)
+│
+└── [language-id]
+    ├── editor.*
+    ├── files.*
+    └── format*</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>der en JSON-notasjon som f.eks.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="json"><span class="nl">"editor.fontSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>representeres ved</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text">editor
+ └── fontSize</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Systemer er dypere enn vist på flere steder. Eksempler som</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="json"><span class="s2">"terminal.integrated.fontSize"</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>som ville vært representert av</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text">settings
+ └── language override (json)
+      └── editor.tabSize</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>vises ikke i oversikten.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1052,6 +1182,247 @@ terminal.integrated.cursorBlinking    Cursor blinking</code></pre>
 </div>
 <div class="paragraph">
 <p>Det er ikke uvanlig å ha endt opp i en situasjon der konkurrerende utvidelser kjører (der flere tilbyr samme tjenester), så det kan være greit å rydde litt opp her innimellom, prøve hvilke man er mest fornøyd med, og deaktivisere resten (evt avinstallere dem om man virkelig har bestemt seg).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_task_automation"><a class="anchor" href="#_task_automation"></a>🤖 Task automation</h3>
+<div class="paragraph">
+<p>For de som er interessert i spesielle ting som Python, C++ eller hva, fins det automation-tips der ute. Her skal vi vise et mer generelt eksempel på hvordan automatiserer kjøring av et shell-skript kalt <strong>runner.sh</strong> på prosjektkatalogen.</p>
+</div>
+<div class="paragraph">
+<p>Det er relativt enkelt å sette opp <em>task automation</em>. I VS Code gjør man:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Åpne prosjektmappen</p>
+</li>
+<li>
+<p>Trykk <code>Ctrl+Shift+P</code></p>
+</li>
+<li>
+<p>Skriv: <strong>Tasks: Configure Task</strong></p>
+</li>
+<li>
+<p>Velg: <strong>Create tasks.json file from template</strong></p>
+</li>
+<li>
+<p>Velg: <strong>Others</strong></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Dette genererer filen</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text">.vscode/tasks.json</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>som nå åpnes i VS Code. Rediger innholdet til:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Passende beskrivelse"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shell"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./runner.sh"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"problemMatcher"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Tasken kan nå kjøres ved <code>Shift+Ctrl+B</code> og klikke på tasken med beskrivelsen du valgte.</p>
+</div>
+<div class="paragraph">
+<p>Linjene</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="json"><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build"</span><span class="err">,</span><span class="w">
+</span><span class="nl">"problemMatcher"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>er nyttige å legge til. Den første gjør at VS Code hopper rett til <code>Run Task</code> etter <code>Shift+Ctrl+B</code>, mens den andre gjør at eventuell output ikke tolkes som kompilator-feil.</p>
+</div>
+<div class="paragraph">
+<p>Skal man siden automatisere flere tasks, legges disse inn i samme fil.</p>
+</div>
+<div class="paragraph">
+<p><strong>Tips</strong>: Det fins en extension Task som gjør at man kjøre tasken via en tekst-knapp nede i taskbar i VS Code, for enda kortere snarvei. Søk gjerne etter informasjon om dette.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_command_pallette"><a class="anchor" href="#_command_pallette"></a>⚡ Command Pallette</h3>
+<div class="paragraph">
+<p>Vi har benyttet kommandopaletten (som er svært nyttig) flere ganger. Her skal vi supplere med en totaloversikt over hva man kan gjøre.</p>
+</div>
+<div class="paragraph">
+<p>For det første er oppgavene på formen:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text">[System / Modul]: [Handling]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>som f.eks.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text">Preferences: Open User Settings (JSON)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Man trenger ikke å skrive hele kommandoen. I praksis en gjør VS Code en fuzzy search blant alle kommandoer.</p>
+</div>
+<div class="paragraph">
+<p>En tre-representasjon av palettens muligheter ser slik ut:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text">Command Palette
+│
+├── File
+│   ├── New File
+│   ├── Open File
+│   ├── Save
+│   ├── Save All
+│   └── Reopen Closed Editor
+│
+├── Edit
+│   ├── Undo / Redo
+│   ├── Format Document
+│   ├── Rename Symbol
+│   ├── Refactor
+│   └── Emmet Expand
+│
+├── View
+│   ├── Toggle Sidebar
+│   ├── Toggle Panel
+│   ├── Appearance
+│   │   ├── Change Theme
+│   │   ├── Change Icon Theme
+│   │   └── Toggle Full Screen
+│   └── Open View (Explorer, Search, SCM, Run)
+│
+├── Go / Navigation
+│   ├── Go to File
+│   ├── Go to Symbol
+│   ├── Go to Definition
+│   ├── Go to Line
+│   └── Go Back / Forward
+│
+├── Search
+│   ├── Find in File
+│   ├── Replace
+│   ├── Search in Workspace
+│   └── Toggle Regex / Case / Whole Word
+│
+├── Terminal
+│   ├── Create New Terminal
+│   ├── Split Terminal
+│   ├── Select Default Profile
+│   └── Run Active File
+│
+├── Tasks
+│   ├── Run Task
+│   ├── Configure Task
+│   ├── Restart Running Task
+│   └── Terminate Task
+│
+├── Debug
+│   ├── Start Debugging
+│   ├── Add Configuration
+│   ├── Select Debug Configuration
+│   └── Toggle Breakpoint
+│
+├── Git / Source Control
+│   ├── Commit
+│   ├── Push
+│   ├── Pull
+│   ├── Checkout Branch
+│   └── Stage Changes
+│
+├── Extensions
+│   ├── Install Extensions
+│   ├── Show Installed Extensions
+│   ├── Disable Extension
+│   └── Reload Window
+│
+├── Preferences
+│   ├── Open Settings (UI)
+│   ├── Open Settings (JSON)
+│   ├── Keyboard Shortcuts
+│   ├── Profiles
+│   └── Settings Sync
+│
+└── Developer
+    ├── Reload Window
+    ├── Toggle Developer Tools
+    ├── Inspect Context Keys
+    └── Show Running Extensions</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Det kan være lurt å gjøre seg kjent her for effektivt arbeid.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_andre_ting_å_fordype_seg_i"><a class="anchor" href="#_andre_ting_å_fordype_seg_i"></a>🧠 Andre ting å fordype seg i</h3>
+<div class="paragraph">
+<p>VS Code har flere muligheter for effektivisering av arbeid. Hva man vil satse på avhenger av type prosjekt, smak og annet. Her vil vi bare nevne ting man bør søke opp dersom begynner å jobbe mer arbeidsintensivt.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Snippets</p>
+<div class="paragraph">
+<p>Snippets er snarveier til å sette inn tilpassede kodeblokker eller annen fast tekststruktur, gjerne med placeholders for ulike valg eller variable. Disse settes opp globalt (i user, ikke i workspace).</p>
+</div>
+<div class="paragraph">
+<p><strong>Merk</strong>: Noen grunnleggende snippets følger med VS Code. Og om man markerer et ord, kan man velge i et utvalg om man klikker på lyspæren, den såkalte <strong>lightbulb</strong>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Merk</strong>: Lightbulb kommer av og til med effektive forslag ellers også, så eksperimenter gjerne.</p>
+</div>
+</li>
+<li>
+<p>Multi cursor editing</p>
+<div class="paragraph">
+<p>Multi cursor editing gjør det mulig å kjapt editere flere steder i teksten samtidig. Mulighetene er mange, så jeg anbefaler å lese mer om dette.</p>
+</div>
+</li>
+<li>
+<p>Snarveier</p>
+<div class="paragraph">
+<p>Man kan enkelt sette opp snarveier (keybindings) for ofte utførte oppgaver. Søk gjerne opp informasjon om dette.</p>
+</div>
+</li>
+<li>
+<p>Profiles</p>
+<div class="paragraph">
+<p>Profiler gir et separat arbeidsmiljøer inni VS Code. Dvs. at man kan samle
+<strong> Settings
+</strong> Extensions
+<strong> Keybindings
+</strong> Snippets
+<strong> Layout
+</strong> Tasks</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>i en profil og bytte mellom ulike profiler etter behov. Dermed kan man ha bare de utvidelsene man trenger, de snarveiene man trenger osv. for enda mer strømlinjeformet arbeidsflyt, uten kollisjoner og unødvendige ting. Søk opp mer informasjon om dette.</p>
 </div>
 </div>
 </div>
