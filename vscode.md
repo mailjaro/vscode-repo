@@ -574,6 +574,23 @@ Command Palette
     └── Show Running Extensions
 ```
 
+Noen hendige snarveier:
+
+```text
+@
+>
+#
+ctr+d
+ctrl+l
+alt+ up or down
+alt+shift + up or down (?)
+ctrl+/
+```
+
+```text
+Ctrl+Shift+.
+```
+
 Det kan være lurt å gjøre seg kjent her for effektivt arbeid.
 
 ## 🧠 Andre ting å fordype seg i
