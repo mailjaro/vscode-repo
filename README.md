@@ -3,6 +3,10 @@
 > Et kort, lite og praktisk hefte om Visual Studio Code på Linux.  
 > Skrevet av Jan R Sandbakken.
 
+## Hovedfil
+
+Hovedfilen heter **vscode.md**. Øvrige filer og resten av denne README-filen er kun for stiling og produksjon i øvrige formater.
+
 ---
 
 ## ❗ Viktig info
@@ -26,7 +30,7 @@
 
 ## 📌 Om prosjektet
 
-Dette prosjektet inneholder kildematerialet (**vscode.md**) til heftet **"Litt om VS Code"**.
+Dette prosjektet inneholder kildematerialet (**vscode.md**) til heftet **"Litt om VS Code"**. Øvrige filer har med stiling og produksjon av andre formater å gjøre.
 
 Heftet er skrevet for Linux-brukere og fokuserer på å få kontroll på:
 
@@ -35,7 +39,7 @@ Heftet er skrevet for Linux-brukere og fokuserer på å få kontroll på:
 
 ## 🗂️ Struktur
 
-Her ser vi den fulle strukturen når alt er konvertert mog produsert (hvilket kan oppnås ved å kjøre skriptet `runner.sh`):
+Her ser vi den fulle strukturen når alt er konvertert og produsert (hvilket kan oppnås ved å kjøre skriptet `runner.sh`):
 
 ```text
 .
