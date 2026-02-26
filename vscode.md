@@ -28,6 +28,8 @@ VS Code ellers mange muligheter for å effektivisere arbeid. Det fins snippets, 
 - ⚡ bruk av kommando-paletten, og
 - 🤖 task automation.
 
+I tillegg er VS Code fint og bruke for Git versjonskontroll, både lokalt og *remote* mot  tjenester som f.eks. GitHub. Kjenner man de viktigste Git-kommandoene, vil bruk av Git på Vs Code føles enkelt. Det har også fordelen av at det å angre aksjoner gjøres kun ved å trykke en minus-knapp (framfor å måtte benytte kommandoopsjoner man vanskelig klarer å huske).
+
 Vi vil gjennomgående basere oss på et Linux-system, slik at kataloger og eksempler i heftet gjelder Linux.
 
 ## 📄 JSON
