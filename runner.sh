@@ -24,13 +24,14 @@ sd '\[source,json\]' '[%unbreakable]\n[source,json]' vscode-2.adoc
 sd '📘 ' '' vscode-2.adoc
 sd '⚙️ ' '' vscode-2.adoc
 sd '🧩 ' '' vscode-2.adoc
+sd '⚡ ' '' vscode-2.adoc
+sd '🤖 ' '' vscode-2.adoc
 sd '📄 ' '' vscode-2.adoc
 sd '📁 ' '' vscode-2.adoc
 sd '📂 ' '' vscode-2.adoc
 sd '🔑 ' '' vscode-2.adoc
-sd '🤖 ' '' vscode-2.adoc
-sd '⚡ ' '' vscode-2.adoc
 sd '🧠 ' '' vscode-2.adoc
+sd '📚 ' '' vscode-2.adoc
 sd '1️⃣ ' '1. ' vscode-2.adoc
 sd '2️⃣ ' '2. ' vscode-2.adoc
 sd '3️⃣ ' '3. ' vscode-2.adoc

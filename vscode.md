@@ -23,11 +23,12 @@ Dette heftet forsøker å være til hjelp for dem som ønsker å få en viss ove
 - ⚙️ JSON-instillinger
 - 🧩 Utvidelser
 
-VS Code ellers mange muligheter for å effektivisere arbeid. Det er bare å kaste seg over mulighetene. En av de vi kort skal se på er
+VS Code ellers mange muligheter for å effektivisere arbeid. Det fins snippets, multiredigering, snarveier og mye annet. Det er imidlertid for omfattende å behandle dette her, men vi skal i det minste se litt på
 
-- 🤖 Task automation
+- ⚡ bruk av kommando-paletten, og
+- 🤖 task automation.
 
-Vi vil gjennomgående basere oss på et Linux-system her, slik at kataloger og eksempler i heftet gjelder Linux.
+Vi vil gjennomgående basere oss på et Linux-system, slik at kataloger og eksempler i heftet gjelder Linux.
 
 ## 📄 JSON
 
@@ -55,7 +56,7 @@ JSON-innstillingene i VS Code er inndelt i følgende hierarki:
 
 De først nevnte vil overstyre de senere. Altså, om Workspace sier noe om `fontSize": 14`, mens User sier `fontSize": 12`, blir fontstørrelse 14 gjeldende.
 
-Den første, multi root settings, er aktuell bare når VS Code har flere toppmapper åpne samtidig. Dette er for mer spesiell bruk, og vi skal ikke se særlig på det her. Det normale er å åpne VS Code på arbeidskatalogen til prosjektet, som gjerne må ha mange underkataloger. (Dette er likevel ikke multi root. Multi root startes ved å klikke **File/Add folder to Workspace ...** i VS Code-menyen og leder til en egen **.code-workspace**-fil.)
+Den første, *multi root settings*, er aktuell bare når VS Code har flere toppmapper åpne samtidig. Dette er for mer spesiell bruk, og vi skal ikke se på det her. Det normale er å åpne VS Code på arbeidskatalogen til prosjektet, som gjerne må ha mange underkataloger. (Dette er likevel ikke *multi root*. *Multi root* startes ved å klikke **File/Add folder to Workspace ...** i VS Code-menyen og leder til en egen **.code-workspace**-fil.)
 
 VS Code har i tillegg noen preferanser brukeren kan sette (ofte knyttet til layout som mørkt eller lyst tema, om paneler skal vises til høyre eller venstre etc) som ikke er en del av JSON-systemet og som lagres separat.
 
@@ -75,7 +76,7 @@ Det anbefales ikke å editere disse direkte, men heller bruke et GUI som VS Code
 
 ### 📁 JSON-filer
 
-Man kan åpne JSON-filene til User og Workspace via kommandopaletten (`Ctrl+Shift+P`) ved:
+Man kan åpne JSON-filene til User og Workspace via kommandopaletten (`Ctrl+P`) ved:
 
 ```text
 Preferences: Open User Settings (JSON)
@@ -90,7 +91,7 @@ Man kan også få oversikt over default-verdier nøklene har via kommandopalette
 Preferences: Open Default Settings (JSON)
 ```
 
-Denne filen er imidlertid  kjempestor, så her må man søke etter bestemte nøkler (f.eks. nevnt i de to ovennevnte filene).
+Denne filen er imidlertid  kjempestor, så her må man søke etter bestemte nøkler.
 
 For å eksemplifisere: Anta User settings inneholder
 
@@ -112,7 +113,7 @@ Husk også at man kan kommentere i JSON-filene ved:
 // Midlertidig test
 ```
 
-hvilket også kan bidra til oversikt og forståelse over tid.
+hvilket også vil være til hjelp.
 
 ### 📂 Settingsvinduet
 
@@ -155,7 +156,7 @@ for User og
 
 for workspace.
 
-Her må vi stoppe opp og avklare noe som ofte forvirrer. Alene forteller ikke verdifeltet hvilken verdi nøkkelen faktisk har. Default-verdi vises nemlig om tilhørende nøkkelen ikke er satt. I eksempelet settes det følgende eksplisitt i User-json
+Her må vi stoppe opp og avklare noe som ofte forvirrer. Alene forteller ikke verdifeltet i Settingsvinduet hvilken verdi nøkkelen faktisk har. Default-verdi vises nemlig om tilhørende nøkkelen ikke er satt. I eksempelet settes det følgende eksplisitt i User-json
 
 ```json
 "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace"
@@ -167,7 +168,7 @@ mens Workspace-json ikke setter nøkkelen. Det betyr at font-settingen bruker ha
 "editor.fontFamily": "'Droid Sans Mono', monospace"
 ```
 
-er aktiv, hvilket den ikke er.
+er aktiv, hvilket den ikke er. Det er altså JSON-filene som viser verdiene som er satt, ikke alltid visningsfeltet i Settingsvinduet.
 
 Likevel, settingsvinduet er nyttig. Man kan sette verdier, og tilhørende JSON-fil oppdateres automatisk. Motsatt oppdatering skjer også. Videre har vi sett viktigheten av søkefilter  `@modified`, og vi har i tillegg flere slike:
 
@@ -285,25 +286,11 @@ editor
  └── fontSize
 ```
 
-Systemer er dypere enn vist på flere steder. Eksempler som
-
-```json
-"terminal.integrated.fontSize"
-```
-
-som ville vært representert av
-
-```text
-settings
- └── language override (json)
-      └── editor.tabSize
-```
-
-vises ikke i oversikten.
+Systemet er dypere enn vist på flere steder.
 
 ### 🔑 Viktige nøkler
 
-Det er umulig, og ikke nødvendig, å ha oversikt over større deler av nøkkelsettet til VS Code. Her kommer imidlertid et utvalg som kan være aktuelt for relativt nye brukere.
+Det er umulig, og ikke nødvendig, å ha oversikt over større deler av nøkkelsettet til VS Code. Her kommer imidlertid et gruppert utvalg som kan være aktuelt i starten.
 
 #### 1️⃣ Editor / redigering
 
@@ -383,7 +370,7 @@ terminal.integrated.cursorBlinking    Cursor blinking
 
 ## 🧩 Extensions
 
-Også når det gjelder extensions kan eksperimentering, mer eller mindre gode tips etc, over tid føre til redusert oversikt. Så det første man trenger er å vite hvordan man kan få litt oversikt over installerte extensions, samt hvilke som er aktive eller ikke.
+Også når det gjelder extensions kan eksperimentering over tid føre til redusert oversikt. Så man kan trenge å få oversikt over installerte extensions, hvilke som er aktive eller ikke, og hvilke man evt. kan avinstallere.
 
 Man kan åpne extensions-panelet grafisk eller ved
 
@@ -401,7 +388,7 @@ Her vil en serie extensions listes, både de man allerede har og mange andre som
 - Disabled    → installert men ikke i bruk
 ```
 
-Man kan også søke på bestemt ting, f.eks. knyttet til C++, Python, Markdown, Asciidoc etc som f.eks:
+Man kan også søke på bestemt ting, f.eks. knyttet til C++, Python, Markdown, Asciidoc etc, ved:
 
 ```text
 @installed markdown
@@ -411,27 +398,27 @@ Man kan også søke på bestemt ting, f.eks. knyttet til C++, Python, Markdown, 
 @installed asciidoc
 ```
 
-I tillegg kan man fra **Command Palett** (CTR+SHIFT+P) taste inn
+I tillegg kan man fra **Command Palett** (Ctrl+P) taste inn
 
 ```text
 Extensions: Show Running Extensions
 ```
 
-Uansett kan man da se hvilke utvidelser som er aktive (enabled) eller ikke-aktive (disabled), og man kan velge/endre dette i vinduene som dukker opp når man klikker på utvidelsene.
+Uansett kan man se hvilke utvidelser som er aktive (enabled) eller ikke-aktive (disabled), og man kan velge/endre dette i vinduene som dukker opp når man klikker på utvidelsene.
 
-Det er ikke uvanlig å ha endt opp i en situasjon der konkurrerende utvidelser kjører (der flere tilbyr samme tjenester), så det kan være greit å rydde litt opp her innimellom, prøve hvilke man er mest fornøyd med, og deaktivisere resten (evt avinstallere dem om man virkelig har bestemt seg).
+Det er ikke uvanlig å ha endt opp i en situasjon der konkurrerende utvidelser kjører (der flere tilbyr samme tjenester), så det kan være greit å rydde litt innimellom, prøve hvilke man er mest fornøyd med, og deaktivisere resten (evt avinstallere dem når man har bestemt seg).
 
 ## 🤖 Task automation
 
-For de som er interessert i spesielle ting som Python, C++ eller hva, fins det automation-tips der ute. Her skal vi vise et mer generelt eksempel på hvordan automatiserer kjøring av et shell-skript kalt **runner.sh** på prosjektkatalogen.
+For de som jobber med spesielle ting som Python, C++ etc, fins det en mengde snippets og automation-tips der ute. Her skal vi vise en mer generell oppgave, nemlig hvordan man automatiserer kjøring av et shell-skript (kalt **runner.sh**) på prosjektkatalogen.
 
-Det er relativt enkelt å sette opp *task automation*. I VS Code gjør man:
+Dette er relativt enkelt å sette opp. I VS Code gjør man:
 
 1. Åpne prosjektmappen
-2. Trykk `Ctrl+Shift+P`
-3. Skriv: **Tasks: Configure Task**
-4. Velg: **Create tasks.json file from template**
-5. Velg: **Others**
+2. Trykk `Ctrl+P`
+3. Skriv **Tasks: Configure Task**
+4. Velg **Create tasks.json file from template**
+5. Velg **Others**
 
 Dette genererer filen
 
@@ -456,7 +443,7 @@ som nå åpnes i VS Code. Rediger innholdet til:
 }
 ```
 
-Tasken kan nå kjøres ved `Shift+Ctrl+B` og klikke på tasken med beskrivelsen du valgte.
+Tasken kan nå kjøres ved `Shift+Ctrl+B` og deretter klikke på tasken med beskrivelsen du valgte.
 
 Linjene
 
@@ -468,11 +455,9 @@ er nyttige å legge til. Den første gjør at VS Code hopper rett til `Run Task`
 
 Skal man siden automatisere flere tasks, legges disse inn i samme fil.
 
-**Tips**: Det fins en extension Task som gjør at man kjøre tasken via en tekst-knapp nede i taskbar i VS Code, for enda kortere snarvei. Søk gjerne etter informasjon om dette.
-
 ## ⚡ Command Pallette
 
-Vi har benyttet kommandopaletten (som er svært nyttig) flere ganger. Her skal vi supplere med en totaloversikt over hva man kan gjøre.
+Vi har benyttet kommandopaletten (som er svært nyttig) flere ganger. Her skal vi supplere med ting hva man kan gjøre.
 
 For det første er oppgavene på formen:
 
@@ -574,54 +559,36 @@ Command Palette
     └── Show Running Extensions
 ```
 
-Noen hendige snarveier:
+Noen hendige snarveier i paletten er:
 
 ```text
-@
->
-#
-ctr+d
-ctrl+l
-alt+ up or down
-alt+shift + up or down (?)
-ctrl+/
+>     : Kommandomodus (Ctrl+Shift+P)      F1, Ctrl+Shift+P
+#     : Søk i workspace-symboler          Ctrl+T
+@     : Symboler i gjeldende fil          Ctrl+Shift+O
+@:    : Symboler gruppert etter type
+:     : Gå til linjenummer                Ctrl+G
+?     : Hjelpemodus
+<fil> : Åpne fil
+<kat> : Åpne katalog
 ```
-
-```text
-Ctrl+Shift+.
-```
-
-Det kan være lurt å gjøre seg kjent her for effektivt arbeid.
 
 ## 🧠 Andre ting å fordype seg i
 
-VS Code har flere muligheter for effektivisering av arbeid. Hva man vil satse på avhenger av type prosjekt, smak og annet. Her vil vi bare nevne ting man bør søke opp dersom begynner å jobbe mer arbeidsintensivt.
+VS Code har flere muligheter for effektivisering av arbeid. Hva man vil satse på avhenger av type prosjekt, smak og annet. Her vil vi bare nevne ting man bør søke opp dersom begynner å jobbe mer intensivt.
 
-- Snippets
+- Snippets for å sette inn kodeblokker/faste tesktstrukturer
+- *Multi cursor editing* for kjapp editering flere steder i teksten samtidig
+- Snarveier / *keybindings*
+- Profiles for separate arbeidsmiljøer inni VS Code
 
-  Snippets er snarveier til å sette inn tilpassede kodeblokker eller annen fast tekststruktur, gjerne med placeholders for ulike valg eller variable. Disse settes opp globalt (i user, ikke i workspace).
+og sikkert mye annet.
 
-  **Merk**: Noen grunnleggende snippets følger med VS Code. Og om man markerer et ord, kan man velge i et utvalg om man klikker på lyspæren, den såkalte **lightbulb**.
+## 📚 Andre bøker og hefter i serien
 
-  **Merk**: Lightbulb kommer av og til med effektive forslag ellers også, så eksperimenter gjerne.
+📘 Linux: Det neste steget
 
-- Multi cursor editing
+📘 Litt om Git
 
-  Multi cursor editing gjør det mulig å kjapt editere flere steder i teksten samtidig. Mulighetene er mange, så jeg anbefaler å lese mer om dette.
+📘 Litt om CSS
 
-- Snarveier
-
-  Man kan enkelt sette opp snarveier (keybindings) for ofte utførte oppgaver. Søk gjerne opp informasjon om dette.
-
-- Profiles
-
-  Profiler gir et separat arbeidsmiljøer inni VS Code. Dvs. at man kan samle
-
-  - Settings
-  - Extensions
-  - Keybindings
-  - Snippets
-  - Layout
-  - Tasks
-
-i en profil og bytte mellom ulike profiler etter behov. Dermed kan man ha bare de utvidelsene man trenger, de snarveiene man trenger osv. for enda mer strømlinjeformet arbeidsflyt, uten kollisjoner og unødvendige ting. Søk opp mer informasjon om dette.
+📘 Litt om GPG

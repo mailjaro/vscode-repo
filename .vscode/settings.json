@@ -18,13 +18,16 @@
         "pandoc",
         "Poenget",
         "popd",
+        "punktnotasjon",
         "pushd",
         "sectanchors",
         "settingsvinduet",
         "skriptet",
         "temaer",
+        "tesktstrukturer",
         "toclevels",
-        "ulagrede"
+        "ulagrede",
+        "visningsfeltet"
     ],
     "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
     "makefile.configureOnOpen": false,
