@@ -589,8 +589,8 @@ og sikkert mye annet.
 
 📘 Linux: Det neste steget
 
-📘 Litt om Git
+📘 [Litt om Git](https://mailjaro.github.io/git-repo/)
 
-📘 Litt om CSS
+[📘 Litt om CSS](https://mailjaro.github.io/css-repo/)
 
-📘 Litt om GPG
+📘 [Litt om GPG](https://mailjaro.github.io/gpg-repo/)
