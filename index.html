@@ -568,6 +568,7 @@ pre.rouge .gs {
 <ul class="sectlevel1">
 <li><a href="#_litt_om_vs_code">Litt om VS Code</a>
 <ul class="sectlevel2">
+<li><a href="#_installasjon">Installasjon</a></li>
 <li><a href="#_json">JSON</a></li>
 <li><a href="#_json_innstillinger">JSON-innstillinger</a>
 <ul class="sectlevel3">
@@ -576,13 +577,13 @@ pre.rouge .gs {
 <li><a href="#_struktur_i_json_default_settings">Struktur i JSON Default settings</a></li>
 <li><a href="#_viktige_nøkler">Viktige nøkler</a>
 <ul class="sectlevel4">
-<li><a href="#_1_editor_redigering">1. Editor / redigering</a></li>
-<li><a href="#_2_språkspesifikke_innstillinger">2. Språkspesifikke innstillinger</a></li>
-<li><a href="#_3_filer">3. Filer</a></li>
-<li><a href="#_4_editor_display_ui">4. Editor / display / UI</a></li>
-<li><a href="#_5_linting_formatering_markdown_asciidoc">5. Linting / formatering / Markdown / AsciiDoc</a></li>
-<li><a href="#_6_git">6. Git</a></li>
-<li><a href="#_7_terminal_konsoll">7. Terminal / konsoll</a></li>
+<li><a href="#_editor_redigering">Editor / redigering</a></li>
+<li><a href="#_språkspesifikke_innstillinger">Språkspesifikke innstillinger</a></li>
+<li><a href="#_filer">Filer</a></li>
+<li><a href="#_editor_display_ui">Editor / display / UI</a></li>
+<li><a href="#_linting_formatering_markdown_asciidoc">Linting / formatering / Markdown / AsciiDoc</a></li>
+<li><a href="#_git">Git</a></li>
+<li><a href="#_terminal_konsoll">Terminal / konsoll</a></li>
 </ul>
 </li>
 </ul>
@@ -672,6 +673,12 @@ pre.rouge .gs {
 </div>
 <div class="paragraph">
 <p>Vi vil gjennomgående basere oss på et Linux-system, slik at kataloger og eksempler i heftet gjelder Linux.</p>
+</div>
+<div class="sect2">
+<h3 id="_installasjon"><a class="anchor" href="#_installasjon"></a>Installasjon</h3>
+<div class="paragraph">
+<p>Det er enkelt å installere VS Code på ulike distroer, og vi trenger ikke ta detaljene. Men man har gjerne to valg: installere gjennom Flatpak, Snap eller tilsvarende, eller å installere en RPM-versjon, f.eks. via <code>sudo dnf install code</code> på Fedora. For VS Code er det sistnevnte å foretrekke. Sandboksingen som omslutter Flatpak-/Snap-pakker, kan undertrykke settinger som kompilatorer trenger for å fungere (som config-filer, shell-stier og annet). Undertegnede brukte selv en frustrerende dag på å få et "<em>Hello World</em>"-program i Kotlin til å fungere, med all mulig nettsøk og AI-assistanse tilgjengelig, før det ble klart at sandboksing var problemet.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_json"><a class="anchor" href="#_json"></a>JSON</h3>
@@ -1029,7 +1036,7 @@ Preferences: Open Workspace Settings (JSON)</code></pre>
 <p>Det er umulig, og ikke nødvendig, å ha oversikt over større deler av nøkkelsettet til VS Code. Her kommer imidlertid et gruppert utvalg som kan være aktuelt i starten.</p>
 </div>
 <div class="sect4">
-<h5 id="_1_editor_redigering"><a class="anchor" href="#_1_editor_redigering"></a>1. Editor / redigering</h5>
+<h5 id="_editor_redigering"><a class="anchor" href="#_editor_redigering"></a>Editor / redigering</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="text">NØKKEL                  HVA DEN GJØR                  TYPISK VERDI
@@ -1045,7 +1052,7 @@ editor.minimap.enabled  Viser eller skjuler minimap   true / false</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_2_språkspesifikke_innstillinger"><a class="anchor" href="#_2_språkspesifikke_innstillinger"></a>2. Språkspesifikke innstillinger</h5>
+<h5 id="_språkspesifikke_innstillinger"><a class="anchor" href="#_språkspesifikke_innstillinger"></a>Språkspesifikke innstillinger</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="text">NØKKEL                    FUNKSJON          TYPISK VERDI
@@ -1056,7 +1063,7 @@ editor.tabSize            Tab-størrelse     2/4</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_3_filer"><a class="anchor" href="#_3_filer"></a>3. Filer</h5>
+<h5 id="_filer"><a class="anchor" href="#_filer"></a>Filer</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="text">NØKKEL                        FUNKSJON                TYPISK VERDI
@@ -1069,7 +1076,7 @@ files.encoding                Filkoding               "utf8"</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_4_editor_display_ui"><a class="anchor" href="#_4_editor_display_ui"></a>4. Editor / display / UI</h5>
+<h5 id="_editor_display_ui"><a class="anchor" href="#_editor_display_ui"></a>Editor / display / UI</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="text">NØKKEL                   FUNKSJON
@@ -1082,7 +1089,7 @@ editor.lineNumbers       Linjenummer visning</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_5_linting_formatering_markdown_asciidoc"><a class="anchor" href="#_5_linting_formatering_markdown_asciidoc"></a>5. Linting / formatering / Markdown / AsciiDoc</h5>
+<h5 id="_linting_formatering_markdown_asciidoc"><a class="anchor" href="#_linting_formatering_markdown_asciidoc"></a>Linting / formatering / Markdown / AsciiDoc</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="text">NØKKEL                        FUNKSJON
@@ -1096,7 +1103,7 @@ asciidoc.extension.path       Tilpass path til Asciidoctor binær</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_6_git"><a class="anchor" href="#_6_git"></a>6. Git</h5>
+<h5 id="_git"><a class="anchor" href="#_git"></a>Git</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="text">NØKKEL                  FUNKSJON
@@ -1107,7 +1114,7 @@ git.confirmSync         Bekreft før sync</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_7_terminal_konsoll"><a class="anchor" href="#_7_terminal_konsoll"></a>7. Terminal / konsoll</h5>
+<h5 id="_terminal_konsoll"><a class="anchor" href="#_terminal_konsoll"></a>Terminal / konsoll</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="text">NØKKEL                                FUNKSJON
@@ -1171,6 +1178,35 @@ terminal.integrated.cursorBlinking    Cursor blinking</code></pre>
 </div>
 <div class="paragraph">
 <p>Det er ikke uvanlig å ha endt opp i en situasjon der konkurrerende utvidelser kjører (der flere tilbyr samme tjenester), så det kan være greit å rydde litt innimellom, prøve hvilke man er mest fornøyd med, og deaktivisere resten (evt avinstallere dem når man har bestemt seg).</p>
+</div>
+<div class="paragraph">
+<p>Utvidelser kan også installeres fra kommandlinjen. En fordel er at utvidelsesspesifiseringene der er entydig gitt, mens navnet kan være flertydig. Ifm. reinstallasjoner er kommandoversjonene godt å ha notert. Her vises eksempler som gjør man kan komme igang med Kotlin, Python of C/C&#43;&#43; for programmering, og for Markdown- og Asciidoc-skriving/-visning:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="c"># Kotlin</span>
+code <span class="nt">--install-extension</span> fwcd.kotlin
+code <span class="nt">--install-extension</span> matklad.kotlin-test-runner
+code <span class="nt">--install-extension</span> formulahendry.code-runner
+
+<span class="c"># Python</span>
+code <span class="nt">--install-extension</span> ms-python.python
+code <span class="nt">--install-extension</span> ms-python.vscode-pylance
+code <span class="nt">--install-extension</span> njpwerner.autodocstring
+
+<span class="c"># C / C++</span>
+code <span class="nt">--install-extension</span> ms-vscode.cpptools
+code <span class="nt">--install-extension</span> vadimcn.vscode-lldb
+code <span class="nt">--install-extension</span> ms-vscode.cmake-tools
+code <span class="nt">--install-extension</span> austin.code-gnu-global
+
+<span class="c"># Markdown</span>
+code <span class="nt">--install-extension</span> yzhang.markdown-all-in-one
+code <span class="nt">--install-extension</span> shd101wyy.markdown-preview-enhanced
+
+<span class="c"># AsciiDoc</span>
+code <span class="nt">--install-extension</span> asciidoctor.asciidoc</code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1420,7 +1456,7 @@ terminal.integrated.cursorBlinking    Cursor blinking</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version 1.0 2026-02-19<br>
-Last updated 2026-02-27 15:18:22 +0100
+Last updated 2026-03-02 11:52:57 +0100
 </div>
 </div>
 </body>
