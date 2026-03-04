@@ -32,6 +32,10 @@ I tillegg er VS Code fint og bruke for Git versjonskontroll, både lokalt og *re
 
 Vi vil gjennomgående basere oss på et Linux-system, slik at kataloger og eksempler i heftet gjelder Linux.
 
+## 💻 Installasjon
+
+Det er enkelt å installere VS Code på ulike distroer, og vi trenger ikke ta detaljene. Men man har gjerne to valg: installere gjennom Flatpak, Snap eller tilsvarende, eller å installere en RPM-versjon, f.eks. via `sudo dnf install code` på Fedora. For VS Code er det sistnevnte å foretrekke. Sandboksingen som omslutter Flatpak-/Snap-pakker, kan undertrykke settinger som kompilatorer trenger for å fungere (som config-filer, shell-stier og annet). Undertegnede brukte selv en frustrerende dag på å få et "*Hello World*"-program i Kotlin til å fungere, med all mulig nettsøk og AI-assistanse tilgjengelig, før det ble klart at sandboksing var problemet.
+
 ## 📄 JSON
 
 JSON (JavaScript Object Notation) er et tekstbasert format for lagring og utveksling av strukturerte data, hovedsakelig brukt mellom en server og en web-applikasjon. Det er uavhengig av programmeringsspråk og enkelt for maskiner å tolke. Dataene struktureres primært i nøkkel/verdi-par og lister (arrays). Datatyper inkluderer strenger, tall, boolske verdier, null, arrays og andre objekter.
@@ -409,6 +413,34 @@ Extensions: Show Running Extensions
 Uansett kan man se hvilke utvidelser som er aktive (enabled) eller ikke-aktive (disabled), og man kan velge/endre dette i vinduene som dukker opp når man klikker på utvidelsene.
 
 Det er ikke uvanlig å ha endt opp i en situasjon der konkurrerende utvidelser kjører (der flere tilbyr samme tjenester), så det kan være greit å rydde litt innimellom, prøve hvilke man er mest fornøyd med, og deaktivisere resten (evt avinstallere dem når man har bestemt seg).
+
+Utvidelser kan også installeres fra kommandlinjen. En fordel er at utvidelsesspesifiseringene der er entydig gitt, mens navnet kan være flertydig. Ifm. reinstallasjoner er kommandoversjonene godt å ha notert. Her vises eksempler som gjør man kan komme igang med Kotlin, Python of C/C++ for programmering, og for Markdown- og Asciidoc-skriving/-visning:
+
+```bash
+
+# Kotlin
+code --install-extension fwcd.kotlin
+code --install-extension matklad.kotlin-test-runner
+code --install-extension formulahendry.code-runner
+
+# Python
+code --install-extension ms-python.python
+code --install-extension ms-python.vscode-pylance
+code --install-extension njpwerner.autodocstring
+
+# C / C++
+code --install-extension ms-vscode.cpptools
+code --install-extension vadimcn.vscode-lldb
+code --install-extension ms-vscode.cmake-tools
+code --install-extension austin.code-gnu-global
+
+# Markdown
+code --install-extension yzhang.markdown-all-in-one
+code --install-extension shd101wyy.markdown-preview-enhanced
+
+# AsciiDoc
+code --install-extension asciidoctor.asciidoc
+```
 
 ## 🤖 Task automation
 

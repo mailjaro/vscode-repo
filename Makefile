@@ -47,6 +47,13 @@ vscode-1.adoc: $(MD) $(COMMON)
 vscode-2.adoc: vscode-1.adoc
 	@cp $< $@
 	@sd '\p{Extended_Pictographic}\uFE0F? ' '' $@
+	@sd ' 1️⃣' '' $@
+	@sd ' 2️⃣' '' $@
+	@sd ' 3️⃣' '' $@
+	@sd ' 4️⃣' '' $@
+	@sd ' 5️⃣' '' $@
+	@sd ' 6️⃣' '' $@
+	@sd ' 7️⃣' '' $@
 
 # add unbreakable attributes before certain source blocks for PDF
 vscode-3.adoc: vscode-2.adoc
