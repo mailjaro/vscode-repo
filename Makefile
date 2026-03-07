@@ -46,6 +46,8 @@ vscode-1.adoc: $(MD) $(COMMON)
 # remove emojis when generating HTML2/PDF
 vscode-2.adoc: vscode-1.adoc
 	@cp $< $@
+	@sd '❗' 'NOTE:' $@
+	@sd '‼️' 'CAUTION:' $@
 	@sd '\p{Extended_Pictographic}\uFE0F? ' '' $@
 	@sd ' 1️⃣' '' $@
 	@sd ' 2️⃣' '' $@

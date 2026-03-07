@@ -623,6 +623,8 @@ og sikkert mye annet.
 
 📘 [Litt om Git](https://mailjaro.github.io/git-repo/)
 
-[📘 Litt om CSS](https://mailjaro.github.io/css-repo/)
+📘 [Litt om CSS](https://mailjaro.github.io/css-repo/)
 
 📘 [Litt om GPG](https://mailjaro.github.io/gpg-repo/)
+
+📘 [Litt om syntaksutheving](https://mailjaro.github.io/highlight-repo/)

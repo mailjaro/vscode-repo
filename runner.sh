@@ -22,6 +22,8 @@ asciidoctor -a stylesheet=../styles/asciidoctor-default.css \
 cp vscode-1.adoc vscode-2.adoc
 sd '\[source,text\]' '[%unbreakable]\n[source,text]' vscode-2.adoc
 sd '\[source,json\]' '[%unbreakable]\n[source,json]' vscode-2.adoc
+sd '❗' 'NOTE:' vscode-2.adoc
+sd '‼️' 'CAUTION:' vscode-2.adoc
 sd '\p{Extended_Pictographic}\uFE0F? ' '' vscode-2.adoc  # Fjerner emojis
 sd ' 1️⃣' '' vscode-2.adoc
 sd ' 2️⃣' '' vscode-2.adoc
