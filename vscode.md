@@ -20,7 +20,7 @@ Men med all denne funksjonaliteten og fleksibiliteten, følger også kompleksite
 
 Dette heftet forsøker å være til hjelp for dem som ønsker å få en viss oversikt over VS Code. Det fokuseres altså på
 
-- ⚙️ JSON-instillinger
+- ⚙️ JSON-innstillinger
 - 🧩 Utvidelser
 
 VS Code ellers mange muligheter for å effektivisere arbeid. Det fins snippets, multiredigering, snarveier og mye annet. Det er imidlertid for omfattende å behandle dette her, men vi skal i det minste se litt på
@@ -414,7 +414,7 @@ Uansett kan man se hvilke utvidelser som er aktive (enabled) eller ikke-aktive (
 
 Det er ikke uvanlig å ha endt opp i en situasjon der konkurrerende utvidelser kjører (der flere tilbyr samme tjenester), så det kan være greit å rydde litt innimellom, prøve hvilke man er mest fornøyd med, og deaktivisere resten (evt avinstallere dem når man har bestemt seg).
 
-Utvidelser kan også installeres fra kommandlinjen. En fordel er at utvidelsesspesifiseringene der er entydig gitt, mens navnet kan være flertydig. Ifm. reinstallasjoner er kommandoversjonene godt å ha notert. Her vises eksempler som gjør man kan komme igang med Kotlin, Python of C/C++ for programmering, og for Markdown- og Asciidoc-skriving/-visning:
+Utvidelser kan også installeres fra kommandolinjen. En fordel er at utvidelsesspesifiseringene der er entydig gitt, mens navnet kan være flertydig. Ifm. reinstallasjoner er kommandoversjonene godt å ha notert. Her vises eksempler som gjør man kan komme igang med Kotlin, Python of C/C++ for programmering, og for Markdown- og Asciidoc-skriving/-visning:
 
 ```bash
 
@@ -440,8 +440,30 @@ code --install-extension shd101wyy.markdown-preview-enhanced
 
 # AsciiDoc
 code --install-extension asciidoctor.asciidoc
+
+# Stavekontroll
+code --install-extension streetsidesoftware.code-spell-checker
+code --install-extension streetsidesoftware.code-spell-checker-norwegian
 ```
 
+Man kan også avinstallere utvidelser fra kommandolina:
+
+```bash
+code --uninstall-extension <utvidelse>
+```
+
+Og man har mulighet for å eksportere ut en liste over installerte utvidelser ved:
+
+```bash
+code --list-extensions > extensions.txt
+```
+
+og alt kan installeres fra  denne (på annen maskin eller på samme maskin etter en reinstallasjon) ved:
+
+```bash
+cat extensions.txt | xargs -L 1 code --install-extension 
+
+```
 ## 🤖 Task automation
 
 For de som jobber med spesielle ting som Python, C++ etc, fins det en mengde snippets og automation-tips der ute. Her skal vi vise en mer generell oppgave, nemlig hvordan man automatiserer kjøring av et shell-skript (kalt **runner.sh**) på prosjektkatalogen.
