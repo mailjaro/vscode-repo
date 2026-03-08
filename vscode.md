@@ -504,7 +504,7 @@ Tasken kan nå kjøres ved `Shift+Ctrl+B` og deretter klikke på tasken med besk
 Linjene
 
 ```json
-"group": "build",
+"group": "build"
 "problemMatcher": []
 ```
 er nyttige å legge til. Den første gjør at VS Code hopper rett til `Run Task` etter `Shift+Ctrl+B`, mens den andre gjør at eventuell output ikke tolkes som kompilator-feil.

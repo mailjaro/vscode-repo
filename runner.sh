@@ -5,15 +5,17 @@ mkdir -p builds
 pandoc vscode.md  \
    --metadata-file=config/common.yaml \
    --css=styles/epub-dark.css -o \
-   builds/vscode-dark.epub
+   builds/vscode-pan-dark.epub
 
 pandoc vscode.md  \
    --metadata-file=config/common.yaml \
    --css=styles/epub-light.css -o \
-   builds/vscode-light.epub
+   builds/vscode-pan-light.epub
 
 pandoc vscode.md --metadata-file=./config/common.yaml \
                  --wrap=none -f markdown-smart -o vscode-1.adoc
+
+echo "✅ Pandoc EPUB LIGHT and DARK successfully built."
 
 asciidoctor -a stylesheet=../styles/asciidoctor-default.css \
             -a data-uri \
@@ -34,13 +36,24 @@ sd ' 6️⃣' '' vscode-2.adoc
 sd ' 7️⃣' '' vscode-2.adoc
 
 
+asciidoctor-epub3 config/masterEPUB-light.adoc \
+                  -o builds/vscode-asc-light.epub
+asciidoctor-epub3 config/masterEPUB-dark.adoc \
+                  -o builds/vscode-asc-dark.epub
+
+echo "✅ Asciidoctor EPUB LIGHT and DARK successfully built."
+
 asciidoctor -a stylesheet=../styles/asciidoctor-default.css \
             -a data-uri \
             config/masterHTML-2.adoc -o builds/vscode-2.html
+
+echo "✅ HTML1 and HTML2 successfully built."
 
 cp vscode-2.adoc vscode-3.adoc
 
 asciidoctor-pdf config/masterPDF.adoc --theme=styles/asciidoctor-default.yml \
                 -o builds/vscode.pdf
+
+echo "✅ PDF successfully built."
 
 popd

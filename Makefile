@@ -1,93 +1,145 @@
-# Makefile VSCODE-DOC project
+# Makefile — VSCODE-DOC project
 
-# source markdown and configuration
-MD = vscode.md
-COMMON = config/common.yaml
-BUILD = builds
+# -------------------------------------------------------------------
+# configuration
+# -------------------------------------------------------------------
 
-# output files
-EPUB_DARK = $(BUILD)/vscode-dark.epub
-EPUB_LIGHT = $(BUILD)/vscode-light.epub
-HTML1 = $(BUILD)/vscode-1.html
-HTML2 = $(BUILD)/vscode-2.html
-PDF = $(BUILD)/vscode.pdf
+MD       = vscode.md
+COMMON   = config/common.yaml
+BUILD    = builds
 
-ASCIIDOC_CSS = styles/asciidoctor-default.css
+ASCIIDOC_CSS      = styles/asciidoctor-default.css
 ASCIIDOCTOR_THEME = styles/asciidoctor-default.yml
 
-.PHONY: all epub html1 html2 pdf clean
+MKDIR_P = mkdir -p
+RM      = @rm -rf
 
-all: epub html1 html2 pdf
+# -------------------------------------------------------------------
+# outputs
+# -------------------------------------------------------------------
+
+EPUB_PAN_DARK  = $(BUILD)/vscode-pan-dark.epub
+EPUB_PAN_LIGHT = $(BUILD)/vscode-pan-light.epub
+
+EPUB_ASC_DARK  = $(BUILD)/vscode-asc-dark.epub
+EPUB_ASC_LIGHT = $(BUILD)/vscode-asc-light.epub
+
+HTML1 = $(BUILD)/vscode-1.html
+HTML2 = $(BUILD)/vscode-2.html
+PDF   = $(BUILD)/vscode.pdf
+
+# intermediate files
+ADOC1 = vscode-1.adoc
+ADOC2 = vscode-2.adoc
+ADOC3 = vscode-3.adoc
+
+# -------------------------------------------------------------------
+# targets
+# -------------------------------------------------------------------
+
+.PHONY: all epub1 epub2 html1 html2 pdf clean
+
+all: epub1 epub2 html1 html2 pdf
 
 # ensure build directory exists
 $(BUILD):
-	@mkdir -p $@
+	@$(MKDIR_P) $@
 
-# --- EPUB ------------------------------------------------------------------
-epub: $(BUILD) $(EPUB_DARK) $(EPUB_LIGHT)
+# -------------------------------------------------------------------
+# intermediate AsciiDoc
+# -------------------------------------------------------------------
 
-$(EPUB_DARK): $(MD) $(COMMON) | $(BUILD)
+$(ADOC1): $(MD) $(COMMON)
 	@pandoc $(MD) --metadata-file=$(COMMON) \
-	       --css=styles/epub-dark.css -o $@
-	@echo "✅ EPUB DARK successfully built."
+	       --wrap=none -f markdown-smart \
+	       -o $@
 
-$(EPUB_LIGHT): $(MD) $(COMMON) | $(BUILD)
-	@pandoc $(MD) --metadata-file=$(COMMON) \
-	       --css=styles/epub-light.css -o $@
-	@echo "✅ EPUB LIGHT successfully built."
+# -------------------------------------------------------------------
+# PANDOC EPUB
+# -------------------------------------------------------------------
 
-# --- intermediate AsciiDoc files -------------------------------------------
+epub1: $(EPUB_PAN_DARK) $(EPUB_PAN_LIGHT)
 
-# converted directly from markdown once per build chain
-vscode-1.adoc: $(MD) $(COMMON)
-	@pandoc $(MD) --metadata-file=$(COMMON) --wrap=none \
-	       -f markdown-smart -o $@
+$(EPUB_PAN_DARK): $(MD) $(COMMON) | $(BUILD)
+	@pandoc $< --metadata-file=$(COMMON) \
+	       --css=styles/epub-dark.css \
+	       -o $@
+	@echo "✅ PANDOC EPUB DARK built."
 
-# remove emojis when generating HTML2/PDF
-vscode-2.adoc: vscode-1.adoc
+$(EPUB_PAN_LIGHT): $(MD) $(COMMON) | $(BUILD)
+	@pandoc $< --metadata-file=$(COMMON) \
+	       --css=styles/epub-light.css \
+	       -o $@
+	@echo "✅ PANDOC EPUB LIGHT built."
+
+# -------------------------------------------------------------------
+# OPPRYDDING OG FJERNING AV EMOJIS
+# -------------------------------------------------------------------
+
+$(ADOC2): $(ADOC1)
 	@cp $< $@
 	@sd '❗' 'NOTE:' $@
 	@sd '‼️' 'CAUTION:' $@
 	@sd '\p{Extended_Pictographic}\uFE0F? ' '' $@
-	@sd ' 1️⃣' '' $@
-	@sd ' 2️⃣' '' $@
-	@sd ' 3️⃣' '' $@
-	@sd ' 4️⃣' '' $@
-	@sd ' 5️⃣' '' $@
-	@sd ' 6️⃣' '' $@
-	@sd ' 7️⃣' '' $@
+	@sd ' [1-7]️⃣' '' $@
 
-# add unbreakable attributes before certain source blocks for PDF
-vscode-3.adoc: vscode-2.adoc
+$(ADOC3): $(ADOC2)
 	@cp $< $@
 	@sd '\[source,output\]' '[%unbreakable]\n[source,output]' $@
 	@sd '\[source,bash\]' '[%unbreakable]\n[source,bash]' $@
 
-# --- HTML 1 ----------------------------------------------------------------
+# -------------------------------------------------------------------
+# ASCIIDOCTOR EPUB
+# -------------------------------------------------------------------
+
+epub2: $(EPUB_ASC_LIGHT) $(EPUB_ASC_DARK)
+
+$(EPUB_ASC_LIGHT): config/masterEPUB-light.adoc $(ADOC2) | $(BUILD)
+	@asciidoctor-epub3 $< -o $@
+	@echo "✅ ASCIIDOCTOR EPUB LIGHT built."
+
+$(EPUB_ASC_DARK): config/masterEPUB-dark.adoc $(ADOC2) | $(BUILD)
+	@asciidoctor-epub3 $< -o $@
+	@echo "✅ ASCIIDOCTOR EPUB DARK built."
+
+# -------------------------------------------------------------------
+# HTML
+# -------------------------------------------------------------------
+
 html1: $(HTML1)
 
-$(HTML1): config/masterHTML-1.adoc vscode-1.adoc | $(BUILD)
-	@asciidoctor -a stylesheet=../$(ASCIIDOC_CSS) \
-	            -a data-uri config/masterHTML-1.adoc -o $@
-	@echo "✅ HTML 1 successfully built."
+$(HTML1): config/masterHTML-1.adoc $(ADOC1) | $(BUILD)
+	@asciidoctor \
+		-a stylesheet=../$(ASCIIDOC_CSS) \
+		-a data-uri \
+		$< -o $@
+	@echo "✅ HTML 1 built."
 
-# --- HTML 2 ----------------------------------------------------------------
 html2: $(HTML2)
 
-$(HTML2): config/masterHTML-2.adoc vscode-2.adoc | $(BUILD)
-	@asciidoctor -a stylesheet=../$(ASCIIDOC_CSS) \
-	            -a data-uri config/masterHTML-2.adoc -o $@
-	@echo "✅ HTML 2 successfully built."
-# --- PDF -------------------------------------------------------------------
+$(HTML2): config/masterHTML-2.adoc $(ADOC2) | $(BUILD)
+	@asciidoctor \
+		-a stylesheet=../$(ASCIIDOC_CSS) \
+		-a data-uri \
+		$< -o $@
+	@echo "✅ HTML 2 built."
+
+# -------------------------------------------------------------------
+# PDF
+# -------------------------------------------------------------------
+
 pdf: $(PDF)
 
-$(PDF): config/masterPDF.adoc vscode-3.adoc | $(BUILD)
-	@asciidoctor-pdf config/masterPDF.adoc --theme=$(ASCIIDOCTOR_THEME) \
-	                -o $@
-	@echo "✅ PDF successfully built."
+$(PDF): config/masterPDF.adoc $(ADOC3) | $(BUILD)
+	@asciidoctor-pdf $< \
+		--theme=$(ASCIIDOCTOR_THEME) \
+		-o $@
+	@echo "✅ PDF built."
 
-# --- cleanup ---------------------------------------------------------------
+# -------------------------------------------------------------------
+# cleanup
+# -------------------------------------------------------------------
+
 clean:
-	@rm -rf $(BUILD) vscode-1.adoc vscode-2.adoc vscode-3.adoc
-	@echo "✅ Cleaned up build artifacts."
-
+	$(RM) $(BUILD) $(ADOC1) $(ADOC2) $(ADOC3)
+	@echo "✅ Cleaned build artifacts."
