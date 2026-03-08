@@ -63,12 +63,14 @@ epub1: $(EPUB_PAN_DARK) $(EPUB_PAN_LIGHT)
 $(EPUB_PAN_DARK): $(MD) $(COMMON) | $(BUILD)
 	@pandoc $< --metadata-file=$(COMMON) \
 	       --css=styles/epub-dark.css \
+		   --metadata cover-image=images/cover.png \
 	       -o $@
 	@echo "✅ PANDOC EPUB DARK built."
 
 $(EPUB_PAN_LIGHT): $(MD) $(COMMON) | $(BUILD)
 	@pandoc $< --metadata-file=$(COMMON) \
 	       --css=styles/epub-light.css \
+		   --metadata cover-image=images/cover.png \
 	       -o $@
 	@echo "✅ PANDOC EPUB LIGHT built."
 
@@ -87,6 +89,7 @@ $(ADOC3): $(ADOC2)
 	@cp $< $@
 	@sd '\[source,output\]' '[%unbreakable]\n[source,output]' $@
 	@sd '\[source,bash\]' '[%unbreakable]\n[source,bash]' $@
+	@sd '\[source,json\]' '[%unbreakable]\n[source,json]' $@
 
 # -------------------------------------------------------------------
 # ASCIIDOCTOR EPUB

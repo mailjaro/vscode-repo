@@ -9,11 +9,14 @@ pandoc vscode.md  \
 
 pandoc vscode.md  \
    --metadata-file=config/common.yaml \
-   --css=styles/epub-light.css -o \
-   builds/vscode-pan-light.epub
+   --css=styles/epub-light.css \
+   --metadata cover-image=images/cover.png \
+   -o builds/vscode-pan-light.epub
 
 pandoc vscode.md --metadata-file=./config/common.yaml \
-                 --wrap=none -f markdown-smart -o vscode-1.adoc
+                 --wrap=none -f markdown-smart \
+                 --metadata cover-image=images/cover.png \
+                 -o vscode-1.adoc
 
 echo "✅ Pandoc EPUB LIGHT and DARK successfully built."
 
@@ -24,6 +27,7 @@ asciidoctor -a stylesheet=../styles/asciidoctor-default.css \
 cp vscode-1.adoc vscode-2.adoc
 sd '\[source,text\]' '[%unbreakable]\n[source,text]' vscode-2.adoc
 sd '\[source,json\]' '[%unbreakable]\n[source,json]' vscode-2.adoc
+sd '\[source,bash\]' '[%unbreakable]\n[source,bash]' vscode-2.adoc
 sd '❗' 'NOTE:' vscode-2.adoc
 sd '‼️' 'CAUTION:' vscode-2.adoc
 sd '\p{Extended_Pictographic}\uFE0F? ' '' vscode-2.adoc  # Fjerner emojis
