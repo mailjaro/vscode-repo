@@ -766,7 +766,7 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 <div class="sect2">
 <h3 id="_json_innstillinger"><a class="anchor" href="#_json_innstillinger"></a>JSON-innstillinger</h3>
 <div class="paragraph">
-<p>JSON-innstillingene i VS Code er inndelt i følgende hierarki:</p>
+<p>JSON-innstillingene i VS Code er i utganspunktet inndelt i følgende hierarki:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -812,6 +812,127 @@ pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
 <div class="paragraph">
 <p>Det anbefales ikke å editere disse direkte, men heller bruke et GUI som VS Code.</p>
 </div>
+<div class="paragraph">
+<p>Men etter som man begynner å ta i bruk flere funksjoner eller utvidelser, opprettes flere andre JSON-filer dynamisk. Det er intet fast sett for alle innstillinger, men vi skal liste opp noen typiske. Vi har ikke anledning til å gå spesielt inn på noen av disse, men også disse dukker opp i kommandopaletten.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Workspace-konfigurasjoner i .vscode/</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Fil</th>
+<th class="tableblock halign-left valign-top">Bruk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>launch.json</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">debug-konfigurasjon</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tasks.json</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">build- og automatiseringsoppgaver</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>extensions.json</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">anbefalte extensions for prosjektet</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Personlige brukerfiler ~/.config/Code/User/</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Fil</th>
+<th class="tableblock halign-left valign-top">Bruk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>keybindings.json</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">egne tastatursnarveier</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>snippets/*.json</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">egne kode-snippets</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Extension</th>
+<th class="tableblock halign-left valign-top">Fil</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Docker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>devcontainer.json</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Remote Containers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>devcontainer.json</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ESLint</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.eslintrc.json</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prettier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.prettierrc</code></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Fil</th>
+<th class="tableblock halign-left valign-top">Bruk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>settings.json</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">prosjektinnstillinger</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>launch.json</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">debug-konfigurasjon</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tasks.json</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">build- og automatiseringsoppgaver</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>extensions.json</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">anbefalte extensions for prosjektet</p></td>
+</tr>
+</tbody>
+</table>
 <div class="sect3">
 <h4 id="_json_filer"><a class="anchor" href="#_json_filer"></a>JSON-filer</h4>
 <div class="paragraph">
@@ -1363,7 +1484,7 @@ code <span class="nt">--install-extension</span> streetsidesoftware.code-spell-c
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="json"><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build"</span><span class="err">,</span><span class="w">
+<pre class="rouge highlight"><code data-lang="json"><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build"</span><span class="w">
 </span><span class="nl">"problemMatcher"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span></code></pre>
 </div>
 </div>
@@ -1542,6 +1663,9 @@ code <span class="nt">--install-extension</span> streetsidesoftware.code-spell-c
 <p><a href="https://mailjaro.github.io/gpg-repo/">Litt om GPG</a></p>
 </div>
 <div class="paragraph">
+<p><a href="https://mailjaro.github.io/makefile-repo/">Litt om Makefiles</a></p>
+</div>
+<div class="paragraph">
 <p><a href="https://mailjaro.github.io/highlight-repo/">Litt om syntaksutheving</a></p>
 </div>
 </div>
@@ -1551,7 +1675,7 @@ code <span class="nt">--install-extension</span> streetsidesoftware.code-spell-c
 <div id="footer">
 <div id="footer-text">
 Version 1.0 2026-02-19<br>
-Last updated 2026-03-08 08:18:24 +0100
+Last updated 2026-03-08 08:25:07 +0100
 </div>
 </div>
 </body>
