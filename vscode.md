@@ -53,7 +53,7 @@ Her ser vi eksempel på syntaks:
 
 ## ⚙️ JSON-innstillinger
 
-JSON-innstillingene i VS Code er inndelt i følgende hierarki:
+JSON-innstillingene i VS Code er i utganspunktet inndelt i følgende hierarki:
 
 1. Folder settings (multi root settings)
 2. Workspace settings (for hvert prosjekt)
@@ -79,6 +79,41 @@ User settings ligger i følgende fil:
 ```
 
 Det anbefales ikke å editere disse direkte, men heller bruke et GUI som VS Code.
+
+Men etter som man begynner å ta i bruk flere funksjoner eller utvidelser, opprettes flere andre JSON-filer dynamisk. Det er intet fast sett for alle innstillinger, men vi skal liste opp noen typiske. Vi har ikke anledning til å gå spesielt inn på noen av disse, men også disse dukker opp i kommandopaletten.
+
+- Workspace-konfigurasjoner i .vscode/
+
+| Fil               | Bruk                                |
+| ----------------- | ----------------------------------- |
+| `launch.json`     | debug-konfigurasjon                 |
+| `tasks.json`      | build- og automatiseringsoppgaver   |
+| `extensions.json` | anbefalte extensions for prosjektet |
+
+Personlige brukerfiler ~/.config/Code/User/ 
+
+| Fil                | Bruk                   |
+| ------------------ | ---------------------- |
+| `keybindings.json` | egne tastatursnarveier |
+| `snippets/*.json`  | egne kode-snippets     |
+
+
+| Extension         | Fil                 |
+| ----------------- | ------------------- |
+| Docker            | `devcontainer.json` |
+| Remote Containers | `devcontainer.json` |
+| ESLint            | `.eslintrc.json`    |
+| Prettier          | `.prettierrc`       |
+
+
+
+| Fil               | Bruk                                |
+| ----------------- | ----------------------------------- |
+| `settings.json`   | prosjektinnstillinger               |
+| `launch.json`     | debug-konfigurasjon                 |
+| `tasks.json`      | build- og automatiseringsoppgaver   |
+| `extensions.json` | anbefalte extensions for prosjektet |
+
 
 ### 📁 JSON-filer
 
@@ -648,5 +683,7 @@ og sikkert mye annet.
 📘 [Litt om CSS](https://mailjaro.github.io/css-repo/)
 
 📘 [Litt om GPG](https://mailjaro.github.io/gpg-repo/)
+
+📘 [Litt om Makefiles](https://mailjaro.github.io/makefile-repo/)
 
 📘 [Litt om syntaksutheving](https://mailjaro.github.io/highlight-repo/)
