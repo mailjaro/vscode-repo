@@ -676,7 +676,7 @@ og sikkert mye annet.
 
 ## 📚 Andre bøker og hefter i serien
 
-📘 Linux: Det neste steget
+📘 [Linux for hjemmebruk](https://mailjaro.github.io/linux-repo/)
 
 📘 [Litt om Git](https://mailjaro.github.io/git-repo/)
 
@@ -687,3 +687,5 @@ og sikkert mye annet.
 📘 [Litt om Makefiles](https://mailjaro.github.io/makefile-repo/)
 
 📘 [Litt om syntaksutheving](https://mailjaro.github.io/highlight-repo/)
+
+📘 [Moderne AI: Virkemåte](https://mailjaro.github.io/ai-repo/)
