@@ -676,16 +676,6 @@ og sikkert mye annet.
 
 ## 📚 Andre bøker og hefter i serien
 
-📘 [Linux for hjemmebruk](https://mailjaro.github.io/linux-repo/)
+For andre hefter i serien, se:
 
-📘 [Litt om Git](https://mailjaro.github.io/git-repo/)
-
-📘 [Litt om CSS](https://mailjaro.github.io/css-repo/)
-
-📘 [Litt om GPG](https://mailjaro.github.io/gpg-repo/)
-
-📘 [Litt om Makefiles](https://mailjaro.github.io/makefile-repo/)
-
-📘 [Litt om syntaksutheving](https://mailjaro.github.io/highlight-repo/)
-
-📘 [Moderne AI: Virkemåte](https://mailjaro.github.io/ai-repo/)
+📘 [Min startside på GitHub](https://mailjaro.github.io/)
